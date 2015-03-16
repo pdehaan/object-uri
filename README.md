@@ -1,6 +1,31 @@
 # object-url
 
-Url object implementation
+Url object implementation.
+
+Grammar
+-------
+
+    [type:]//host[/path...][?{params...}][#hash]
+
+API
+---
+    class Object.Url.
+      @parse(string)
+      @instanceOf(obj)
+      -toString()
+      -setParams(params)
+      -updateParams(params)
+
+
+Example
+-------
+  
+    var uri = Object.Url.parse("http://example.com/do?force=true#version2");
+  
+    alert(uri.host); // 'example.com'
+  
+
+
 
 Repo
 ----
