@@ -1,40 +1,40 @@
 
 /*
 
-    Url class represents structure parsed from string.
+    Uri class represents structure parsed from string.
     - type
     - host
     - path[]
     - params
     - hash 
 
-    Url grammar: [type:]//host[/path...][?{(key=value)...}][#hash]
+    Uri grammar: [type:]//host[/path...][?{params...}][#hash]
     
     @example usage
     
-        uri = Url.parse "http://example.com/do?force=true#version2"
+        uri = Object.Uri.parse "http://example.com/do?force=true#version2"
  */
 
 (function() {
   var hasProp = {}.hasOwnProperty;
 
-  Object.Url = (function() {
+  Object.Uri = (function() {
     var _decC, _encC;
 
     _decC = decodeURIComponent;
 
     _encC = encodeURIComponent;
 
-    function Url(params) {
+    function Uri(params) {
       this.setParams(params);
     }
 
-    Url.prototype.setParams = function(params) {
+    Uri.prototype.setParams = function(params) {
       this.params = {};
       return this.updateParams(params);
     };
 
-    Url.prototype.updateParams = function(delta) {
+    Uri.prototype.updateParams = function(delta) {
       var k, v;
       if (delta) {
         for (k in delta) {
@@ -46,7 +46,7 @@
       return this;
     };
 
-    Url.prototype.toString = function() {
+    Uri.prototype.toString = function() {
       var n, r, ref, sep, v;
       r = (this.host ? (this.type ? this.type + "://" + this.host + "/" : "//" + this.host + "/") : '') + this.path.join('/');
       sep = '?';
@@ -65,13 +65,13 @@
       return r;
     };
 
-    Url.instanceOf = function(o) {
-      return o && o.constructor === Url;
+    Uri.instanceOf = function(o) {
+      return o && o.constructor === Uri;
     };
 
-    Url.parse = function(s, params) {
+    Uri.parse = function(s, params) {
       var i, len, p, q, r, ref, v;
-      r = new Url(params);
+      r = new Uri(params);
       if (!s) {
         return r;
       }
@@ -79,7 +79,7 @@
         r.type = s.type;
         r.host = s.host;
         r.path = s.path;
-        r.params = s.params;
+        r.updateParams(s.params);
         r.hash = s.hash;
         return r;
       }
@@ -119,7 +119,7 @@
       return r;
     };
 
-    return Url;
+    return Uri;
 
   })();
 

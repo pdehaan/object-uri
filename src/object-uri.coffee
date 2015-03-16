@@ -1,20 +1,20 @@
 ###
 
-    Url class represents structure parsed from string.
+    Uri class represents structure parsed from string.
     - type
     - host
     - path[]
     - params
     - hash 
 
-    Url grammar: [type:]//host[/path...][?{(key=value)...}][#hash]
+    Uri grammar: [type:]//host[/path...][?{params...}][#hash]
     
     @example usage
     
-        uri = Url.parse "http://example.com/do?force=true#version2"
+        uri = Object.Uri.parse "http://example.com/do?force=true#version2"
     
 ###
-class Object.Url
+class Object.Uri
 
     _decC = decodeURIComponent
     _encC = encodeURIComponent
@@ -52,15 +52,15 @@ class Object.Url
 
         r
 
-    #check if Url instance
+    #check if Uri instance
     @instanceOf: (o) -> 
     
-        o and o.constructor is Url
+        o and o.constructor is Uri
 
-    # create a new Url instance parsed from string
+    # create a new Uri instance parsed from string
     @parse: (s, params) ->
 
-        r = new Url(params)
+        r = new Uri(params)
 
         return r unless s
         
@@ -68,7 +68,7 @@ class Object.Url
             r.type = s.type
             r.host = s.host
             r.path = s.path
-            r.params = s.params
+            r.updateParams(s.params)
             r.hash = s.hash
             return r
 

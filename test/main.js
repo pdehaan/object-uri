@@ -1,6 +1,6 @@
 var should = chai.should();
 
-describe('object-url', function () {
+describe('object-uri', function () {
 
     before(function(cb){
         cb();
@@ -8,16 +8,16 @@ describe('object-url', function () {
 
     it('Parse', function (done) {
 
-        var url = Object.Url.parse('http://example.com/path0/path1?id=some#hash');
+        var uri = Object.Uri.parse('http://example.com/path0/path1?id=some#hash');
         
-        console.log(url);
+        console.log(uri);
         
-        url.should.have.property('type').which.equal('http');
-        url.should.have.property('host').which.equal('example.com');
-        url.should.have.property('hash').which.equal('hash');
-        url.path[0].should.be.equal('path0');
-        url.path[1].should.be.equal('path1');
-        url.params['id'].should.be.equal('some');
+        uri.should.have.property('type').which.equal('http');
+        uri.should.have.property('host').which.equal('example.com');
+        uri.should.have.property('hash').which.equal('hash');
+        uri.path[0].should.be.equal('path0');
+        uri.path[1].should.be.equal('path1');
+        uri.params['id'].should.be.equal('some');
                 
 
         done();

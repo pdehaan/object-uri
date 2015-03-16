@@ -1,6 +1,6 @@
-# object-url
+# object-uri
 
-Url object implementation.
+Uri object implementation.
 
 Grammar
 -------
@@ -9,7 +9,7 @@ Grammar
 
 API
 ---
-    class Object.Url.
+    class Object.Uri
       @parse(string)
       @instanceOf(obj)
       -toString()
@@ -20,7 +20,7 @@ API
 Example
 -------
   
-    var uri = Object.Url.parse("http://example.com/do?force=true#version2");
+    var uri = Object.Uri.parse("http://example.com/do?force=true#version2");
   
     alert(uri.host); // 'example.com'
   
@@ -30,7 +30,7 @@ Example
 Repo
 ----
 
-[https://github.com/alitskevich/object-url]
+[https://github.com/alitskevich/object-uri]
 
 
 Legal
