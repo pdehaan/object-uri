@@ -10,10 +10,7 @@
     "name": "Aliaksandr Litskevich",
     "url": "http://google.com/+Alex.Litskevich"
   },
-  "license": {
-    "type": "APACHE20",
-    "url": "http://www.apache.org/licenses/LICENSE-2.0"
-  },
+  "license": "Apache-2.0",
   "scripts": {
     "build": "gulp build",
     "default": "gulp"
